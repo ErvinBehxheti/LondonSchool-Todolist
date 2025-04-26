@@ -88,6 +88,9 @@ for (let i = 0; i < storedValue.length; i++) {
   });
   li.appendChild(deleteButton);
 
-  // 6.3) Shtojmë <li> me buton në <ul>
+  // 6.3) Krijojmë butonin EDIT për secilin item
+
+
+  // 6.4) Shtojmë <li> me buton në <ul>
   ul.appendChild(li);
 }
