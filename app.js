@@ -51,11 +51,25 @@ form.addEventListener("submit", function(event) {
     }
   });
   li.appendChild(deleteButton);
+  // 4.3) Krijojme butonin EDIT
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edit";
+  editButton.addEventListener("click", function() {
+    inputField.value = inputValue; // vendos vlerën në input
+    li.remove();      // hiq nga DOM
+    const idx = todosArray.indexOf(inputValue)                  
+    todosArray.splice(idx, 1);           // fshi nga array
+    localStorage.setItem(              // rifresko localStorage
+      "inputValue", 
+      JSON.stringify(todosArray)
+    );
+  });
+  li.appendChild(editButton);
 
-  // 4.3) Shtojmë <li> në <ul>
+  // 4.4) Shtojmë <li> në <ul>
   ul.appendChild(li);
 
-  // 4.4) Ruajmë todo-n e re në array & localStorage
+  // 4.5) Ruajmë todo-n e re në array & localStorage
   todosArray.push(inputValue);
   localStorage.setItem("inputValue", JSON.stringify(todosArray));
 });
@@ -89,6 +103,18 @@ for (let i = 0; i < storedValue.length; i++) {
   li.appendChild(deleteButton);
 
   // 6.3) Krijojmë butonin EDIT për secilin item
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edit";
+  editButton.addEventListener("click", function() {
+    inputField.value = storedValue[i]; // vendos vlerën në input
+    li.remove();                       // hiq nga DOM
+    todosArray.splice(i, 1);           // fshi nga array
+    localStorage.setItem(              // rifresko localStorage
+      "inputValue", 
+      JSON.stringify(todosArray)
+    );
+  });
+  li.appendChild(editButton);
 
 
   // 6.4) Shtojmë <li> me buton në <ul>
